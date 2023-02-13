@@ -54,6 +54,42 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
+/* #users-table_processing {
+    background-color: white;
+    z-index: 9999 !important;
+}
+
+#users-table_processing div div {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#patiendatatable-table_processing {
+    background-color: white;
+    z-index: 9999 !important;
+}
+
+#patiendatatable-table_processing div div {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+} */
+
+.dataTables_processing.card {
+    background-color: white;
+    z-index: 9999 !important;
+}
+
+.dataTables_processing.card div div {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
 /* end component */
 
 /* Jumbotron Start */

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href={{ asset('css/guest.css') }}>
 
     {{-- Plugin Head --}}
+    <script src="{{ mix('js/app.js') }}"></script>
     @yield('plugin-head')
 </head>
 
@@ -33,11 +34,11 @@
     @include('components.footer')
     {{-- End of Footer --}}
 
-    {{-- Bootsrap --}}
-    <script src={{ asset('js/app.js') }}></script>
-
     {{-- Guest js --}}
     <script src={{ asset('js/guest.js') }}></script>
+
+    <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
+    @stack('scripts')
 
     {{-- Plugin Body --}}
     @yield('plugin-body')
