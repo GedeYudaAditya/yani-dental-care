@@ -1,0 +1,135 @@
+/* Import Font */
+@font-face {
+    font-family: 'Roboto Condensed';
+    src: url('../fonts/RobotoCondensed-Regular.ttf');
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+body {
+    height: 100vh;
+}
+
+/* =============== All Device Start ================= */
+
+/* component */
+.text-mylink {
+    color: #09ffad;
+    text-decoration: none;
+}
+
+.text-mylink:hover {
+    color: #79fffb;
+    text-decoration: none;
+}
+
+.text-mylink:focus {
+    color: #b4f9f7;
+    text-decoration: none;
+}
+
+.myimage {
+    filter: brightness(50%);
+}
+
+.disabled-menu {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.3;
+}
+
+.active-menu:hover {
+    color: #79fffb !important;
+    text-decoration: none;
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.active-menu {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* end component */
+
+/* Jumbotron Start */
+.jumbotron {
+    background: url(../images/hero.jpg) no-repeat center center;
+    background-size: cover;
+    background-position: center;
+    height: 45vh;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.filter {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.jumbotron h1 {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.jumbotron p {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+.jumbotron .btn {
+    background: #fff;
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: 400;
+    border: 1px solid #fff;
+    border-radius: 0;
+    padding: 0.5rem 1rem;
+    margin-top: 2rem;
+}
+
+.jumbotron .btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+.jumbotron .btn:focus {
+    outline: none;
+}
+
+.jumbotron .btn:active {
+    background: #000;
+    color: #fff;
+}
+
+/* Jumbotron End */
+
+/* ================ All Device End ================ */
+
+/* ================ Mobile Start ================ */
+
+@media (max-width: 576px) {
+    .jumbotron h1 {
+        font-size: 2rem;
+    }
+
+    .jumbotron p {
+        font-size: 1rem;
+    }
+
+    .jumbotron .btn {
+        font-size: 1rem;
+    }
+}
