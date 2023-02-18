@@ -8,13 +8,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link {{ Route::is('home') ? 'active' : '' }}" aria-current="page"
+                        href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pasien</a>
+                    <a class="nav-link {{ Route::is('data-pasien') ? 'active' : '' }}"
+                        href="{{ route('data-pasien') }}">Pasien</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Medical History</a>
+                    <a class="nav-link {{ Route::is('medical-record') ? 'active' : '' }}"
+                        href="{{ route('medical-record') }}">Medical History</a>
                 </li>
             </ul>
 

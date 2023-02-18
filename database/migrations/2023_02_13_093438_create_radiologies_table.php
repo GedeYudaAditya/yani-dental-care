@@ -15,8 +15,8 @@ class CreateRadiologiesTable extends Migration
     {
         Schema::create('radiologies', function (Blueprint $table) {
             $table->id();
-            $table->string('images')->nullable();
-            $table->string('slug')->unique();
+            $table->string('image')->nullable();
+            $table->foreignId('medical_record_id')->constrained('medical_records')->onDelete('cascade');
             $table->timestamps();
         });
     }

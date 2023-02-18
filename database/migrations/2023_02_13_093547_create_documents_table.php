@@ -15,8 +15,8 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->string('documents')->nullable();
-            $table->string('slug')->unique();
+            $table->string('document')->nullable();
+            $table->foreignId('medical_record_id')->constrained('medical_records')->onDelete('cascade');
             $table->timestamps();
         });
     }

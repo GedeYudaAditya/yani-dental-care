@@ -15,10 +15,11 @@ class CreateMedicalRecordsTable extends Migration
     {
         Schema::create('medical_records', function (Blueprint $table) {
             $table->id();
+            $table->string('slug')->unique();
             $table->enum('gol_darah', ['A', 'B', 'AB', 'O']);
             $table->enum('penyakit_jantung', ['ya', 'tidak']);
             $table->enum('haemophilia', ['ya', 'tidak']);
-            $table->enum('penyakit_lain', ['ya', 'tidak']);
+            $table->string('penyakit_lain')->nullable();
             $table->string('alergi_obat')->nullable();
             $table->string('alergi_makanan')->nullable();
             $table->string('tekanan_darah');

@@ -28,7 +28,7 @@ class PatienDataTable extends DataTable
                 'action',
                 function ($query) {
                     return '
-                    <a href="#" class="btn btn-sm btn-primary"><i class="bi bi-eye-fill"></i></a>
+                    <a href="' . route('detail-pasien', $query->slug) . '" class="btn btn-sm btn-primary"><i class="bi bi-eye-fill"></i></a>
                     <a href="' . route('edit-pasien', $query->slug) . '" class="btn btn-sm btn-warning"><i class="bi bi-pencil-fill"></i></a>
                     <form action="' . route('guest.pasien.destroy', $query->slug) . '" method="POST" class="d-inline" onsubmit="return confirm(\' Yakin ingin menghapus ' . $query->name . '? \')">
                         ' . csrf_field() . '
@@ -37,21 +37,21 @@ class PatienDataTable extends DataTable
                     </form>
                     ';
                 }
-            )
-            ->addColumn(
-                'created_at',
-                function ($query) {
-                    return $query->created_at->diffForHumans();
-                }
-            )
-            ->addColumn(
-                'ttl',
-                function ($query) {
-                    $date = $query->ttl;
-                    $date = Date::parse($date)->format('j F Y');
-                    return $date;
-                }
             );
+        // ->addColumn(
+        //     'created_at',
+        //     function ($query) {
+        //         return $query->created_at->format('j F Y');
+        //     },
+        // )
+        // ->addColumn(
+        //     'ttl',
+        //     function ($query) {
+        //         $date = $query->ttl;
+        //         $date = Date::parse($date)->format('j F Y');
+        //         return $date;
+        //     }
+        // );
     }
 
     /**

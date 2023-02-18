@@ -19,7 +19,7 @@
                     <div class="card-body">
                         <h4 class="card-title">25 Pasien</h4>
                         <p class="card-text">telah terdaftar dalam aplikasi, anda dapat mengelolanya pada menu
-                            <a class="text-mylink" href="#">daftar pasien</a>.
+                            <a class="text-mylink" href="{{ route('data-pasien') }}">daftar pasien</a>.
                         </p>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
         <hr>
         <div class="row">
             <div class="col-md-4 mb-3 mb-md-0">
-                <a href="" class="text-decoration-none text-white">
+                <a href="{{ route('data-pasien') }}" class="text-decoration-none text-white">
                     <div class="card text-bg-dark active-menu">
                         <img src="{{ asset('images/pasien.jpg') }}" class="card-img myimage" alt="Pasien">
                         <div class="card-img-overlay text-center d-flex align-items-center">
@@ -72,7 +72,7 @@
                 </a>
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
-                <a href="" class="text-decoration-none text-white">
+                <a href="{{ route('medical-record') }}" class="text-decoration-none text-white">
                     <div class="card text-bg-dark active-menu">
                         <img src="{{ asset('images/medical_records.jpg') }}" class="card-img myimage" alt="Medical Record">
                         <div class="card-img-overlay text-center d-flex align-items-center">

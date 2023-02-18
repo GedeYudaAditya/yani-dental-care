@@ -16,6 +16,15 @@ body {
 /* =============== All Device Start ================= */
 
 /* component */
+#loading {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 99999;
+    background-color: rgb(34, 108, 255);
+    color: white;
+}
+
 .text-mylink {
     color: #09ffad;
     text-decoration: none;
@@ -88,6 +97,58 @@ body {
     color: #fff;
     padding: 10px;
     border-radius: 5px;
+}
+
+.frame-gigi {
+    background-color: rgb(189, 189, 189);
+    border: 1px solid rgb(130, 130, 130);
+    height: 300px;
+}
+
+.bagian-16 {
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.bagian-10 {
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.kotak {
+    background-color: white;
+    border: 1px solid rgb(118, 118, 118);
+    width: calc(1/16 * 100%);
+}
+
+.kotak:hover {
+    border: 2px solid rgb(255, 1, 1);
+    cursor: pointer;
+}
+
+/* odontogram simbol */
+.tembelan {
+    background-color: rgb(26, 26, 26);
+    color: white;
+}
+
+.sisa-akar {
+    background-color: mediumblue;
+    color: white;
+}
+
+.lubang {
+    background-color: rgb(255, 237, 132);
+    color: #000;
+}
+
+.hilang {
+    background-color: rgb(255, 132, 132);
+    color: #000;
 }
 
 /* end component */

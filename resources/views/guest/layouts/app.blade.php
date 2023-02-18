@@ -18,7 +18,13 @@
     @yield('plugin-head')
 </head>
 
-<body style="overflow-x: hidden">
+<body onload="myFunction()" style="overflow-x: hidden">
+
+    <div id="loading" class="row justify-content-center align-items-center">
+        <div class="col-12 spinner-border" style="width: 3rem; height: 3rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
 
     {{-- Start of Nav Bar --}}
     @include('components.navbar')
@@ -42,6 +48,18 @@
 
     {{-- Plugin Body --}}
     @yield('plugin-body')
+
+    <script>
+        var myVar;
+
+        function myFunction() {
+            myVar = setTimeout(showPage, 3000);
+        }
+
+        function showPage() {
+            document.getElementById("loading").style.display = "none";
+        }
+    </script>
 </body>
 
 </html>
