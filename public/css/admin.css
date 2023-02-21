@@ -1,0 +1,11 @@
+.dataTables_processing.card {
+    background-color: white;
+    z-index: 9999 !important;
+}
+
+.dataTables_processing.card div div {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}

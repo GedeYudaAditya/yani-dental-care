@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -21,15 +22,23 @@ class UsersDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', '
-                <a href="#" class="btn btn-sm btn-primary"><i class="bi bi-eye-fill"></i></a>
-                <a href="#" class="btn btn-sm btn-warning"><i class="bi bi-pencil-fill"></i></a>
-                <form action="#" method="POST" class="d-inline">
-                    @csrf
-                    @method("delete")
+            ->addColumn(
+                'action',
+                function ($query) {
+                    return '
+                <a href="' . route('admin.edit-user', $query->id) . '" class="btn btn-sm btn-warning"><i class="bi bi-pencil-fill"></i></a>
+                <form action="' . route('admin.delete-user.process', $query->id) . '" method="POST" class="d-inline" onsubmit="return confirm(\' Yakin ingin menghapus ' . $query->name . '? \')">
+                    ' . csrf_field() . '
+                    ' . method_field('delete') . '
                     <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i></button>
                 </form>
-            ');
+                ';
+                }
+            )
+            ->editColumn('created_at', function ($data) {
+                $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('j F Y');
+                return $formatedDate;
+            });
     }
 
     /**
@@ -40,7 +49,7 @@ class UsersDataTable extends DataTable
      */
     public function query(User $model)
     {
-        return $model->newQuery('users')->where('role', 'user');
+        return $model->newQuery();
     }
 
     /**
@@ -58,9 +67,10 @@ class UsersDataTable extends DataTable
             ->dom('Bfrtip')
             ->orderBy(0, 'asc')
             ->buttons(
-                Button::make('create')->attr(['class' => 'btn btn-primary'])->text('<i class="bi bi-person-plus-fill"></i>'),
-                Button::make('export')->attr(['class' => 'btn btn-success dropdown-toggle'])->text('<i class="bi bi-file-earmark-spreadsheet-fill"></i>'),
-                Button::make('print')->attr(['class' => 'btn btn-info'])->text('<i class="bi bi-printer-fill"></i>'),
+                Button::make('create')->attr(['class' => 'btn btn-primary'])->text('<i class="bi bi-file-earmark-plus"></i>'),
+                Button::make('excel')->attr(['class' => 'btn btn-outline-dark'])->text('<i class="bi bi-file-earmark-spreadsheet-fill"></i>'),
+                Button::make('csv')->attr(['class' => 'btn btn-outline-dark'])->text('<i class="bi bi-filetype-csv"></i>'),
+                Button::make('print')->attr(['class' => 'btn btn-outline-dark'])->text('<i class="bi bi-filetype-pdf"></i>'),
                 Button::make('reset')->attr(['class' => 'btn btn-danger'])->text('<i class="bi bi-arrow-clockwise"></i>'),
                 Button::make('reload')->attr(['class' => 'btn btn-warning'])->text('<i class="bi bi-arrow-repeat"></i>'),
             );
@@ -74,9 +84,10 @@ class UsersDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
+            // Column::make('id')->hidden(),
             Column::make('name'),
             Column::make('email'),
+            Column::make('role'),
             Column::make('created_at'),
             Column::computed(
                 'action',

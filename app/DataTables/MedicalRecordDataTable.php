@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\MedicalRecord;
+use Carbon\Carbon;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -25,9 +26,9 @@ class MedicalRecordDataTable extends DataTable
                 'action',
                 function ($query) {
                     return '
-                <a href="' . route('detail-pasien', $query->slug) . '" class="btn btn-sm btn-primary"><i class="bi bi-eye-fill"></i></a>
-                <a href="' . route('edit-pasien', $query->slug) . '" class="btn btn-sm btn-warning"><i class="bi bi-pencil-fill"></i></a>
-                <form action="' . route('guest.pasien.destroy', $query->slug) . '" method="POST" class="d-inline" onsubmit="return confirm(\' Yakin ingin menghapus ' . $query->name . '? \')">
+                <a href="' . route('detail-medical-record', $query->slug) . '" class="btn btn-sm btn-primary"><i class="bi bi-eye-fill"></i></a>
+                <a href="' . route('edit-medical-record', $query->slug) . '" class="btn btn-sm btn-warning"><i class="bi bi-pencil-fill"></i></a>
+                <form action="' . route('guest.medical-record.destroy', $query->slug) . '" method="POST" class="d-inline" onsubmit="return confirm(\' Yakin ingin menghapus ' . $query->name . '? \')">
                     ' . csrf_field() . '
                     ' . method_field('delete') . '
                     <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i></button>
@@ -35,12 +36,14 @@ class MedicalRecordDataTable extends DataTable
                 ';
                 }
             )
-            ->addColumn(
-                'name',
-                function ($query) {
-                    return $query->patien->name;
-                }
-            );
+            ->editColumn('created_at', function ($data) {
+                $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('j F Y');
+                return $formatedDate;
+            })
+            ->editColumn('updated_at', function ($data) {
+                $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $data->updated_at)->format('j F Y');
+                return $formatedDate;
+            });
     }
 
     /**
@@ -86,7 +89,7 @@ class MedicalRecordDataTable extends DataTable
     {
         return [
             // Column::make('id'),
-            Column::make('name'),
+            Column::make('patien.name'),
             Column::make('gol_darah'),
             Column::make('diagnosa'),
             Column::make('tindakan'),

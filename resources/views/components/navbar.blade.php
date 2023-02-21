@@ -23,10 +23,15 @@
 
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
+                    <a class="nav-link" href="#">{{ auth()->user()->name }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Register</a>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="nav-link"
+                            style="background-color: transparent; border: none;">Logout <i
+                                class="bi bi-box-arrow-right"></i></button>
+                    </form>
                 </li>
             </ul>
         </div>

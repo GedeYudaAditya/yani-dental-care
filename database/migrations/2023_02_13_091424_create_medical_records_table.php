@@ -25,10 +25,10 @@ class CreateMedicalRecordsTable extends Migration
             $table->string('tekanan_darah');
             $table->enum('diabetes', ['ya', 'tidak']);
             $table->enum('hepatitis', ['ya', 'tidak']);
-            $table->string('gigi')->nullable();
-            $table->string('anamnesa')->nullable();
-            $table->string('diagnosa')->nullable();
-            $table->string('tindakan')->nullable();
+            $table->text('gigi')->nullable();
+            $table->longText('anamnesa')->nullable();
+            $table->longText('diagnosa')->nullable();
+            $table->longText('tindakan')->nullable();
             $table->foreignId('patien_id')->constrained('patiens')->onDelete('cascade');
             $table->timestamps();
         });

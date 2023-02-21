@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Patien;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Date;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -37,7 +38,15 @@ class PatienDataTable extends DataTable
                     </form>
                     ';
                 }
-            );
+            )
+            ->editColumn('created_at', function ($data) {
+                $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('j F Y');
+                return $formatedDate;
+            })
+            ->editColumn('ttl', function ($data) {
+                $formatedDate = Carbon::createFromFormat('Y-m-d', $data->ttl)->format('j F Y');
+                return $formatedDate;
+            });
         // ->addColumn(
         //     'created_at',
         //     function ($query) {
@@ -98,13 +107,13 @@ class PatienDataTable extends DataTable
     {
         return [
             Column::make('name')->title('Nama'),
-            Column::make('ttl')->title('TTL'),
+            Column::make('ttl')->title('TTL')->searchable(true)->orderable(true),
             Column::make('jenis_kelamin')->title('J.Kelamin'),
             Column::make('alamat_rumah')->title('Alt.Rumah'),
             Column::make('alamat_kantor')->title('Alt.Kantor')->hidden(),
             Column::make('pekerjaan')->title('Pekerjaan')->hidden(),
             Column::make('no_hp')->title('No.HP')->hidden(),
-            Column::make('created_at')->title('Dibuat'),
+            Column::make('created_at')->title('Dibuat')->searchable(true)->orderable(true),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

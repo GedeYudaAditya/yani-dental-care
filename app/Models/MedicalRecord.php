@@ -31,4 +31,14 @@ class MedicalRecord extends Model
     {
         return $this->belongsTo(Patien::class);
     }
+
+    public function radiology()
+    {
+        return $this->hasMany(Radiology::class);
+    }
+
+    public function document()
+    {
+        return $this->hasMany(Document::class);
+    }
 }

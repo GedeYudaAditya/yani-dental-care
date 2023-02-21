@@ -8,7 +8,7 @@
     {{-- Start of Status App --}}
     <section class="container mb-5">
 
-        <h4 class="text-center">Selamat datang dokter [Name]</h4>
+        <h4 class="text-center">Selamat datang dokter {{ auth()->user()->name }}</h4>
 
         <hr>
 
@@ -17,7 +17,7 @@
                 <div class="card text-bg-primary mb-3 h-100">
                     <div class="card-header">Jumlah Pasien</div>
                     <div class="card-body">
-                        <h4 class="card-title">25 Pasien</h4>
+                        <h4 class="card-title">{{ $banyakPasien }} Pasien</h4>
                         <p class="card-text">telah terdaftar dalam aplikasi, anda dapat mengelolanya pada menu
                             <a class="text-mylink" href="{{ route('data-pasien') }}">daftar pasien</a>.
                         </p>
@@ -28,9 +28,9 @@
                 <div class="card text-bg-primary mb-3 h-100">
                     <div class="card-header">Jumlah Riwayat Medis</div>
                     <div class="card-body">
-                        <h4 class="card-title">25 History</h4>
+                        <h4 class="card-title">{{ $banyakHistory }} History</h4>
                         <p class="card-text">telah dibuat dalam aplikasi, anda dapat mengelolanya pada menu
-                            <i><a class="text-mylink" href="#">medical history</a></i>.
+                            <i><a class="text-mylink" href="{{ route('medical-record') }}">medical history</a></i>.
                         </p>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="card text-bg-primary mb-3 h-100">
                     <div class="card-header">Update Terakhir</div>
                     <div class="card-body">
-                        <h4 class="card-title">13 Februari 2023</h4>
+                        <h4 class="card-title">{{ $lastUpdate }}</h4>
                         <p class="card-text">Aplikasi ini masih dalam tahap pengembangan, untuk informasi lebih lanjut
                             hubungi
                             <a class="text-mylink" href="#">admin</a>.
