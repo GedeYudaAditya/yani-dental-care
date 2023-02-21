@@ -61,16 +61,16 @@ class UsersDataTable extends DataTable
     {
         return $this->builder()
             ->setTableId('users-table')
-            ->addTableClass('table table-striped table-bordered table-hover')
+            ->addTableClass('table table-bordered table-hover')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('Bfrtip')
             ->orderBy(0, 'asc')
             ->buttons(
                 Button::make('create')->attr(['class' => 'btn btn-primary'])->text('<i class="bi bi-file-earmark-plus"></i>'),
-                Button::make('excel')->attr(['class' => 'btn btn-outline-dark'])->text('<i class="bi bi-file-earmark-spreadsheet-fill"></i>'),
-                Button::make('csv')->attr(['class' => 'btn btn-outline-dark'])->text('<i class="bi bi-filetype-csv"></i>'),
-                Button::make('print')->attr(['class' => 'btn btn-outline-dark'])->text('<i class="bi bi-filetype-pdf"></i>'),
+                Button::make('excel')->attr(['class' => 'btn btn-outline'])->text('<i class="bi bi-file-earmark-spreadsheet-fill"></i>'),
+                Button::make('csv')->attr(['class' => 'btn btn-outline'])->text('<i class="bi bi-filetype-csv"></i>'),
+                Button::make('print')->attr(['class' => 'btn btn-outline'])->text('<i class="bi bi-filetype-pdf"></i>'),
                 Button::make('reset')->attr(['class' => 'btn btn-danger'])->text('<i class="bi bi-arrow-clockwise"></i>'),
                 Button::make('reload')->attr(['class' => 'btn btn-warning'])->text('<i class="bi bi-arrow-repeat"></i>'),
             );

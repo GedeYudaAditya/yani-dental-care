@@ -58,7 +58,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
             Route::get('/', [AdminController::class, 'dataUser'])->name('admin.data-user');
             Route::get('/create', [AdminController::class, 'createUser'])->name('admin.create-user');
             Route::get('/edit/{user:id}', [AdminController::class, 'editUser'])->name('admin.edit-user');
-            Route::get('/{user:id}', [AdminController::class, 'detailUser'])->name('admin.detail-user');
+            // Route::get('/{user:id}', [AdminController::class, 'detailUser'])->name('admin.detail-user');
 
             // Route Proses
             Route::post('/create', [UserController::class, 'store'])->name('admin.create-user.process');

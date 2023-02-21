@@ -17,7 +17,7 @@
                 </div>
             @endif
 
-            <div class="border rounded bg-white p-3">
+            <div class="border bg-light rounded p-3">
                 <div class="table-responsive">
                     {!! $dataTable->table() !!}
                 </div>

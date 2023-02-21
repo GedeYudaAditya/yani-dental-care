@@ -33,7 +33,7 @@
                     </a>
                 </div>
                 <div class="col-md-4">
-                    <a class="text-decoration-none" href="#">
+                    <a class="text-decoration-none" href="{{ route('admin.manage-web') }}">
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="card-title">Manajemen Konten Website</h3>
@@ -45,7 +45,7 @@
                     </a>
                 </div>
                 <div class="col-md-4">
-                    <a class="text-decoration-none" href="#">
+                    <a class="text-decoration-none" href="{{ route('admin.backup-restore') }}">
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="card-title">Backup & Restore</h3>

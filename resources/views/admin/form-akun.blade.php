@@ -19,7 +19,7 @@
             @endif
 
 
-            <div class="border rounded bg-white p-3">
+            <div class="border rounded bg-light p-3">
                 <h3>Lengkapi data user:</h3>
 
                 @if (Route::is('admin.create-user'))
