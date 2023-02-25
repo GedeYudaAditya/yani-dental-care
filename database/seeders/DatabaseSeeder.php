@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create(
             [
-                'name' => 'Doko',
+                'name' => 'User',
                 'email' => 'user@gmail.com',
                 'phone' => '081234567890',
                 'address' => 'Jl. User',
@@ -37,8 +37,8 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        User::factory(10)->create();
+        // User::factory(10)->create();
 
-        Patien::factory(100)->create();
+        // Patien::factory(100)->create();
     }
 }

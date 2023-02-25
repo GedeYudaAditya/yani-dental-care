@@ -2,9 +2,9 @@
     <div class="container py-3">
         <div class="row">
             <div class="col-md-4 text-center text-md-start">
-                <h5>Yani Dantel Care</h5>
+                <h5>Ayani Dantel Care</h5>
                 <p>
-                    Sistem Pencatatan Pasien dan Riwayat Medis Gigi dan Mulut Yani Dental Care
+                    Sistem Pencatatan Pasien dan Riwayat Medis Gigi dan Mulut Ayani Dental Care
                 </p>
             </div>
             <div class="col-md-2">
