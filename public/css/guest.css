@@ -1,12 +1,12 @@
 /* Import Font */
 @font-face {
-    font-family: 'Roboto Condensed';
-    src: url('../fonts/RobotoCondensed-Regular.ttf');
+    font-family: "Roboto Condensed";
+    src: url("../fonts/RobotoCondensed-Regular.ttf");
 }
 
 * {
     box-sizing: border-box;
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
 }
 
 body {
@@ -122,7 +122,7 @@ body {
 .kotak {
     background-color: white;
     border: 1px solid rgb(118, 118, 118);
-    width: calc(1/16 * 100%);
+    width: calc(1 / 16 * 100%);
 }
 
 .kotak:hover {
@@ -149,6 +149,36 @@ body {
 .hilang {
     background-color: rgb(255, 132, 132);
     color: #000;
+}
+
+.gigi-palsu {
+    background-color: rgb(139, 155, 0);
+    color: #000;
+}
+
+.implan {
+    background-color: rgb(141, 35, 44);
+    color: #ffffff;
+}
+
+.gr {
+    background-color: rgb(0, 37, 116);
+    color: #ffffff;
+}
+
+.mobility {
+    background-color: rgb(139, 139, 139);
+    color: #ffffff;
+}
+
+.persistensi {
+    background-color: rgb(105, 255, 163);
+    color: #000;
+}
+
+.impaksi {
+    background-color: rgb(159, 0, 173);
+    color: #ffffff;
 }
 
 /* end component */

@@ -197,6 +197,12 @@
                 <div class="col-md-3 sisa-akar text-white">Sisa Akar</div>
                 <div class="col-md-3 lubang">Lubang</div>
                 <div class="col-md-3 hilang">Hilang</div>
+                <div class="col-md-3 gigi-palsu">Gigi Palsu</div>
+                <div class="col-md-3 implan">Implan</div>
+                <div class="col-md-3 gr">GR</div>
+                <div class="col-md-3 mobility">Mobility</div>
+                <div class="col-md-6 persistensi">Persistensi</div>
+                <div class="col-md-6 impaksi">Impaksi</div>
             </div>
 
             <div class="tembelan-detail row mb-3">
@@ -206,17 +212,25 @@
             <hr>
             <b>Radiologi</b>
             <div class="m-auto" style="width: 200px">
-                <img class="img-fluid"
-                    src="{{ asset('/storage/uploads/radiologi/' . $medicalRecord->radiology[0]->image) }}"
-                    alt="">
+                @if ($medicalRecord->radiology[0]->image1 != null)
+                    <img class="img-fluid"
+                        src="{{ asset('/storage/uploads/radiologi/' . $medicalRecord->radiology[0]->image) }}"
+                        alt="">
+                @else
+                    <p class="text-center">Tidak Ada Gambar</p>
+                @endif
             </div>
 
             <hr>
             <div class="text-center">
-                <a class="btn btn-primary"
-                    href="{{ asset('/storage/uploads/dokumen/' . $medicalRecord->document[0]->document) }}"
-                    target="_blank">Lihat
-                    Dokumen</a>
+                @if ($medicalRecord->radiology[0]->image2 != null)
+                    <a class="btn btn-primary"
+                        href="{{ asset('/storage/uploads/dokumen/' . $medicalRecord->document[0]->document) }}"
+                        target="_blank">Lihat
+                        Dokumen</a>
+                @else
+                    <button class="btn btn-secondary" disabled>Tidak Ada Dokumen</button>
+                @endif
             </div>
 
             <table class="table table-striped">
@@ -285,6 +299,13 @@
                 for (var i = 0; i < gigi.length; i++) {
                     if (gigi[i][1] == nomor) {
                         $(this).addClass(gigi[i][0]);
+
+                        // add text when hover
+                        // convert the text with uppercase and remove '-' and replace with ' '
+                        var text = gigi[i][0].replace(/-/g, " ");
+                        text = text.toUpperCase();
+                        $(this).attr("title", text);
+
                         arrayNomor.push(nomor);
                     }
                 }

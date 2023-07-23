@@ -8,10 +8,10 @@ body {
 
 #sectionForm {
     background-color: #ffffff;
-    margin: 100px auto;
+    /* margin: 20px auto; */
     font-family: Raleway;
     padding: 40px;
-    width: 70%;
+    /* width: 70%; */
     min-width: 300px;
 }
 
@@ -25,6 +25,12 @@ input {
     font-size: 17px;
     font-family: Raleway;
     border: 1px solid #aaaaaa;
+}
+
+input[type="checkbox"] {
+    padding: 0 !important;
+    display: inline-block;
+    /* width: 15px; */
 }
 
 /* Mark input boxes that gets an error on validation: */
@@ -46,12 +52,12 @@ select.invalid {
 }
 
 /* Hide all steps by default: */
-.tab {
+/* .tab {
     display: none;
-}
+} */
 
 button {
-    background-color: #04AA6D;
+    background-color: #04aa6d;
     color: #ffffff;
     border: none;
     padding: 10px 20px;
@@ -86,7 +92,7 @@ button:hover {
 
 /* Mark the steps that are finished and valid: */
 .step.finish {
-    background-color: #04AA6D;
+    background-color: #04aa6d;
 }
 
 /* clear the css */
