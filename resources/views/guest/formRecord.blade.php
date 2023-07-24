@@ -240,6 +240,11 @@
                             <input type="file" placeholder="File Radiologi..." oninput="this.className = ''"
                                 accept=".pdf, .doc, .docx" name="dokumen">
                         </p>
+                        <p>
+                            RCT (menerima: pdf, doc, docx)
+                            <input type="file" placeholder="File RCT..." oninput="this.className = ''"
+                                accept="pdf, doc, docx" name="rct">
+                        </p>
                         <p>Anamnesa
                             <textarea name="anamnesa" id="" class="w-100"></textarea>
                         </p>
@@ -469,6 +474,11 @@
                             Dokumen (menerima: pdf, doc, docx)
                             <input type="file" placeholder="File Radiologi..." oninput="this.className = ''"
                                 accept="pdf, doc, docx" name="dokumen" value="{{ $patien->document[0]->document }}">
+                        </p>
+                        <p>
+                            RCT (menerima: pdf, doc, docx)
+                            <input type="file" placeholder="File RCT..." oninput="this.className = ''"
+                                accept="pdf, doc, docx" name="rct" value="{{ $patien->document[0]->document }}">
                         </p>
                         <p>Anamnesa
                             <textarea name="anamnesa" id="" class="w-100">{{ $patien->anamnesa }}</textarea>

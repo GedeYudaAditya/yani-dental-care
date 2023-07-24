@@ -212,7 +212,7 @@
             <hr>
             <b>Radiologi</b>
             <div class="m-auto" style="width: 200px">
-                @if ($medicalRecord->radiology[0]->image1 != null)
+                @if ($medicalRecord->radiology[0]->image != null)
                     <img class="img-fluid"
                         src="{{ asset('/storage/uploads/radiologi/' . $medicalRecord->radiology[0]->image) }}"
                         alt="">
@@ -223,13 +223,21 @@
 
             <hr>
             <div class="text-center">
-                @if ($medicalRecord->radiology[0]->image2 != null)
+                @if ($medicalRecord->document[0]->document != null)
                     <a class="btn btn-primary"
                         href="{{ asset('/storage/uploads/dokumen/' . $medicalRecord->document[0]->document) }}"
                         target="_blank">Lihat
                         Dokumen</a>
                 @else
                     <button class="btn btn-secondary" disabled>Tidak Ada Dokumen</button>
+                @endif
+
+                @if ($medicalRecord->rct[0]->rct != null)
+                    <a class="btn btn-primary" href="{{ asset('/storage/uploads/rct/' . $medicalRecord->rct[0]->rct) }}"
+                        target="_blank">Lihat
+                        RCT</a>
+                @else
+                    <button class="btn btn-secondary" disabled>Tidak Ada Dokumen RCT</button>
                 @endif
             </div>
 

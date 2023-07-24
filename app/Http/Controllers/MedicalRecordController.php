@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Document;
 use App\Models\MedicalRecord;
 use App\Models\Radiology;
+use App\Models\RCT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -30,6 +31,7 @@ class MedicalRecordController extends Controller
             'gigi' => 'required',
             'radiologi' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'dokumen' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+            'rct' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
             'anamnesa' => 'nullable',
             'diagnosa' => 'nullable',
             'tindakan' => 'nullable',
@@ -55,6 +57,12 @@ class MedicalRecordController extends Controller
                 $dokumen = time() . '.' . $request->dokumen->extension();
                 // save to storage/app/public/uploads/dokumen
                 $request->dokumen->storeAs('public/uploads/dokumen', $dokumen);
+            }
+
+            if ($request->hasFile('rct')) {
+                $rct = time() . '.' . $request->rct->extension();
+                // save to storage/app/public/uploads/dokumen
+                $request->rct->storeAs('public/uploads/rct', $rct);
             }
 
             $record = MedicalRecord::create([
@@ -87,6 +95,11 @@ class MedicalRecordController extends Controller
                 'medical_record_id' => $record->id,
             ]);
 
+            RCT::create([
+                'rct' => $rct,
+                'medical_record_id' => $record->id,
+            ]);
+
             DB::commit();
             return redirect()->route('medical-record')->with('success', 'Medical Record created successfully.');
         } catch (\Exception $e) {
@@ -115,6 +128,7 @@ class MedicalRecordController extends Controller
             'gigi' => 'required',
             'radiologi' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'dokumen' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+            'rct' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
             'anamnesa' => 'nullable',
             'diagnosa' => 'nullable',
             'tindakan' => 'nullable',
@@ -150,6 +164,16 @@ class MedicalRecordController extends Controller
                 $request->dokumen->storeAs('public/uploads/dokumen', $dokumen);
             }
 
+            if ($request->hasFile('rct')) {
+
+                // delete old rct file from storage
+                Storage::delete('public/uploads/rct/' . $medicalRecord->rct[0]->rct);
+
+                $rct = time() . '.' . $request->rct->extension();
+                // save to storage/app/public/uploads/dokumen
+                $request->rct->storeAs('public/uploads/rct', $rct);
+            }
+
             $medicalRecord->update([
                 'patien_id' => $request->patient_id,
                 'slug' => 'medical-record-' . $request->patient_id . '-' . time(),
@@ -181,6 +205,12 @@ class MedicalRecordController extends Controller
                 ]);
             }
 
+            if ($request->hasFile('rct')) {
+                $medicalRecord->rct[0]->update([
+                    'rct' => $rct,
+                ]);
+            }
+
             DB::commit();
             return redirect()->route('medical-record')->with('success', 'Medical Record updated successfully.');
         } catch (\Exception $e) {
@@ -197,6 +227,7 @@ class MedicalRecordController extends Controller
         try {
             Storage::delete('public/uploads/radiologi/' . $medicalRecord->radiology[0]->image);
             Storage::delete('public/uploads/dokumen/' . $medicalRecord->document[0]->document);
+            Storage::delete('public/uploads/rct/' . $medicalRecord->rct[0]->rct);
 
             $medicalRecord->delete();
             DB::commit();

@@ -41,4 +41,9 @@ class MedicalRecord extends Model
     {
         return $this->hasMany(Document::class);
     }
+
+    public function rct()
+    {
+        return $this->hasMany(RCT::class);
+    }
 }
